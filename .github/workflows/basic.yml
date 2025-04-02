@@ -1,0 +1,16 @@
+name: Basic Workflow
+
+on: push  # Triggers when code is pushed to any branch
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest  # Runs on an Ubuntu runner
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4  # Gets the latest code from the repository
+      
+      - name: Print Hello World
+        run: echo "Hello, GitHub Actions!"  # Runs a simple shell command
+
+
