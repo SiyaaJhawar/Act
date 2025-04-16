@@ -1,0 +1,5 @@
+steps:
+  - name: Print a custom env var
+    run: echo "Hello $MY_NAME"
+    env:
+      MY_NAME: Swati
