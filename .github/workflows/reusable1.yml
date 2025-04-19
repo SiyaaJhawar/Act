@@ -17,3 +17,4 @@ jobs:
     steps:
       - run: echo "Hello, ${{ inputs.username }}"
       - run: echo "Environment: ${{ inputs.environment }}"
+
