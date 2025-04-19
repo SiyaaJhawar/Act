@@ -1,0 +1,10 @@
+name: Caller Workflow
+
+on: push
+
+jobs:
+  use-reusable:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      username: Swati
+      environment: production
