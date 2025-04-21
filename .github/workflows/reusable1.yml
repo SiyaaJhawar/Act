@@ -3,19 +3,14 @@ name: Reusable Workflow
 on:
   workflow_call:
     inputs:
-      username:
+      environment:
         required: true
         type: string
-      environment:
-        required: false
-        type: string
-        default: "development"
 
 jobs:
-  print-inputs:
+  print-env:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, ${{ inputs.username }}"
-      - run: echo "Environment: ${{ inputs.environment }}"
+      - run: echo "Environment: ${{inputs.environment}}"
 
 
