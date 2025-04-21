@@ -1,4 +1,4 @@
-name: Caller Workflow
+name: Call Reusable Workflow
 
 on: push
 
