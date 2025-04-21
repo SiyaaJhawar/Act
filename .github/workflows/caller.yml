@@ -5,9 +5,11 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   call-reusable:
     uses: ./.github/workflows/reusable1.yml
     with:
       environment: production
-
