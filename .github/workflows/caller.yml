@@ -1,10 +1,14 @@
+# File: .github/workflows/caller.yml
 name: Call Reusable Workflow
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  use-reusable:
+  call-reusable:
     uses: ./.github/workflows/reusable1.yml
     with:
-      username: Swati
       environment: production
+
