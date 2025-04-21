@@ -1,0 +1,11 @@
+name: Call Reusable Workflow
+
+on: [push]
+
+jobs:
+  call-reusable:
+    uses: ./.github/workflows/reusable2.yml
+    with:
+      username: Swati
+    secrets:
+      my_token: ${{ secrets.MY_SECRET }}
