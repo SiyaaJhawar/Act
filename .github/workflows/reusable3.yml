@@ -1,0 +1,21 @@
+name: Reusable Workflow
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+    outputs:
+      greeting:
+        description: "Greeting message"
+        value: ${{ jobs.say-hello.outputs.message }}
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    outputs:
+      message: ${{ steps.set-output.outputs.greeting }}
+    steps:
+      - id: set-output
+        run: echo "greeting=Hello, ${{ inputs.name }}!" >> $GITHUB_OUTPUT
