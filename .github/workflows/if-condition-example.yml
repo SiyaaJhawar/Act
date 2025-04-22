@@ -1,0 +1,25 @@
+name: If Condition Example
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Always run this step
+        run: echo "✅ Build step runs on all branches"
+
+      - name: Only run on feature branches
+        if: startsWith(github.ref, 'refs/heads/feature/')
+        run: echo "🏗️ This step only runs on feature branches"
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy step
+        run: echo "🚀 Deploying to production from main branch"
