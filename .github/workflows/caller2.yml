@@ -1,0 +1,16 @@
+name: Call Reusable Workflow
+
+on: [push]
+
+jobs:
+  call-reusable:
+    uses: ./.github/workflows/reusable3.yml
+    with:
+      name: Swati
+    secrets: {}  # If no secrets are used
+
+  print-output:
+    runs-on: ubuntu-latest
+    needs: call-reusable
+    steps:
+      - run: echo "${{ needs.call-reusable.outputs.greeting }}"
