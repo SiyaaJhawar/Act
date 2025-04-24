@@ -1,0 +1,35 @@
+name: Special Conditions Workflow
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build the app
+        run: echo "✅ Building app..."
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run tests
+        run: |
+          echo "❌ Failing test step on purpose"
+          exit 1
+
+  notify-on-failure:
+    needs: test
+    runs-on: ubuntu-latest
+    if: failure()
+    steps:
+      - name: Send failure notification
+        run: echo "🚨 Tests failed!"
+
+  notify-always:
+    needs: [build, test]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Send final notification
+        run: echo "📢 This runs no matter what"
