@@ -1,0 +1,31 @@
+name: Control Execution Example
+
+on: [push, pull_request]
+
+jobs:
+  always-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: This step always runs
+        run: echo "✅ Running for any push or PR"
+
+  only-main-branch:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Main branch only
+        run: echo "🚀 This job runs only on main branch"
+
+  only-prs:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: PR only job
+        run: echo "🔍 This job runs only on pull requests"
+
+  with-custom-input:
+    if: ${{ github.actor == 'octocat' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run only if user is 'octocat'
+        run: echo "🙋 Hello, Octocat!"
