@@ -1,0 +1,17 @@
+name: Build with Matrix
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: [3.8, 3.9, 3.10]
+    steps:
+      - name: Setup Python ${{ matrix.python-version }} on ${{ matrix.os }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python --version
