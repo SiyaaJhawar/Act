@@ -1,0 +1,34 @@
+# .github/workflows/multi-jobs.yml
+
+name: Multiple Jobs Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  job1:
+    name: First Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Say Hello from Job 1
+        run: echo "Hello from Job 1 👋"
+
+  job2:
+    name: Second Job
+    runs-on: ubuntu-latest
+    needs: job1    # ➡️ job2 waits until job1 finishes successfully
+    steps:
+      - name: Say Hello from Job 2
+        run: echo "Hello from Job 2 🚀"
+
+  job3:
+    name: Third Independent Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello from Job 3
+        run: echo "Hello from Job 3 🎯"
