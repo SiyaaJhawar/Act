@@ -1,0 +1,21 @@
+name: Function Demo
+
+on: [push]
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [14, 16]
+
+    steps:
+      - name: Check version
+        if: contains('14,16,18', matrix.node)
+        run: echo "Node version ${{ matrix.node }} is supported"
+
+      - name: Format greeting
+        run: echo "${{ format('Hi {0}, welcome!', github.actor) }}"
+
+      - name: Join array
+        run: echo "${{ join(matrix.node, ' | ') }}"
