@@ -1,0 +1,16 @@
+name: Cancel Previous Runs
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running only the latest workflow for this branch."
