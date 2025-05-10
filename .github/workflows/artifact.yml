@@ -16,7 +16,7 @@ jobs:
         run: echo "Building project..."
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v3
+        uses:  actions/upload-artifact@v3.1.2
         with:
           name: build-output
           path: ./dist/*
