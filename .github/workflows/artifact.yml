@@ -1,4 +1,4 @@
-name: Upload Single Artifact
+name: Build and Upload Artifacts
 
 on:
   push:
@@ -9,15 +9,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
-
-      - name: Build the project
-        run: echo "Building project..."
-
-      - name: Upload build artifact
+        
+      - name: Build Project
+        run: echo "Building project..." > build.txt
+        
+      - name: Upload Build Artifact
         uses: actions/upload-artifact@v3
-
         with:
-          name: build-output
-          path: ./dist/*
+          name: build-artifact
+          path: build.txt
+
