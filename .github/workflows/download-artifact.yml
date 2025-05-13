@@ -1,0 +1,21 @@
+name: Download Artifacts
+
+on:
+  workflow_run:
+    workflows: ["Build and Upload Artifacts"]
+    types:
+      - completed
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: my-build  # Must match the uploaded artifact name
+          path: ./downloads
+        
+      - name: Verify Artifact
+        run: cat ./downloads/build.txt
+
