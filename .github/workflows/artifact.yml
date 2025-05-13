@@ -18,7 +18,8 @@ jobs:
           echo "This is my build output" > build.txt
         
       - name: Upload Build Artifact
-        uses: actions/upload-artifact@v3.2.1
+        uses: actions/upload-artifact@v3.1.2
+
 
         with:
           name: build-artifact
