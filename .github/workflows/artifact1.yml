@@ -16,7 +16,8 @@ jobs:
         run: echo "Building project..." > build.txt
         
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3.1.2  # Use exact version
+        uses: actions/upload-artifact@v3.1.2
+
         with:
           name: build-artifact
           path: build.txt
