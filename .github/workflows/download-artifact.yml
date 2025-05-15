@@ -12,7 +12,6 @@ jobs:
     steps:
       - name: Download Build Artifact
         uses: actions/download-artifact@v3
-        
         with:
           name: my-build  # Must match the uploaded artifact name
           path: ./downloads
