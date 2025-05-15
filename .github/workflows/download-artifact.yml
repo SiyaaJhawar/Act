@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Build Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v3.0.2
         with:
-          name: my-build  # Must match the upload name
+          name: my-build
           path: ./downloads
         
       - name: Verify Artifact
