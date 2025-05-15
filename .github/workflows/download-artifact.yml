@@ -14,11 +14,12 @@ jobs:
         uses: actions/checkout@v4
         
       - name: Download Build Artifact
-        uses: actions/download-artifact@f7c6a547d9f0b28b3c55c5e02dbf18d647e09ef1
+        uses: actions/download-artifact@v3.1.2
         with:
           name: my-build
           path: ./downloads
         
       - name: Verify Artifact
         run: cat ./downloads/build.txt
+
 
