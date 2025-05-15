@@ -1,25 +1,26 @@
-name: Download Artifacts
+name: Test Artifact Actions
 
-on:
-  workflow_run:
-    workflows: ["Build and Upload Artifacts"]
-    types:
-      - completed
+on: push
 
 jobs:
-  download:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v3.1.2
+      - uses: actions/checkout@v4
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: my-build
-          path: ./downloads
-        
-      - name: Verify Artifact
-        run: cat ./downloads/build.txt
+          name: test-artifact
+          path: README.md
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: test-artifact
+          path: ./downloaded
+
+      - run: ls ./downloaded
+
 
 
