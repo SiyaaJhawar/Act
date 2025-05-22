@@ -1,3 +1,4 @@
+# .github/workflows/download.yml
 name: Download Artifacts
 
 on:
@@ -15,8 +16,8 @@ jobs:
         with:
           name: my-build
           path: ./downloads
-        
-      - name: Verify Artifact
+
+      - name: Show file
         run: cat ./downloads/build.txt
 
 
