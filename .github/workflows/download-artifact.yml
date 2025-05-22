@@ -1,4 +1,5 @@
 # .github/workflows/download.yml
+
 name: Download Artifacts
 
 on:
@@ -11,12 +12,14 @@ jobs:
   download:
     runs-on: ubuntu-latest
     steps:
-     - name: Download Artifact
-       uses: ./.github/actions/download-artifact
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: my-build
+          path: ./downloads
 
-       with:
-        name: my-build
-        path: ./downloads
+      - name: Verify Artifact
+        run: cat ./downloads/build.txt
 
 
          
