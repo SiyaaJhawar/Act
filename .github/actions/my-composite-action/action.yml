@@ -1,0 +1,14 @@
+name: 'My Composite Action'
+description: 'Runs a custom build and test sequence'
+
+inputs:
+  build-path:
+    required: true
+    description: 'Path to build'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run build script
+      run: ./scripts/build.sh ${{ inputs.build-path }}
+      shell: bash
