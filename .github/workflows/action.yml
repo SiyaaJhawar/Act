@@ -1,0 +1,15 @@
+name: Run Composite Action Demo
+
+on: [push]
+
+jobs:
+  run-composite:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run My Composite Action
+        uses: ./.github/actions/my-composite-action
+        with:
+          build-path: './src'
