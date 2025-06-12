@@ -1,0 +1,10 @@
+name: 'Greet User'
+description: 'Greets the user'
+inputs:
+  name:
+    description: 'Name to greet'
+    required: true
+runs:
+  using: 'node16'
+  main: 'index.js'
+
