@@ -1,0 +1,15 @@
+name: Run Docker Custom Action
+
+on: [push]
+
+jobs:
+  docker-action-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Docker Action
+        uses: ./.github/actions/my-docker-action
+        with:
+          name: Swati
